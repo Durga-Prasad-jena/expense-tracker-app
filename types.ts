@@ -46,6 +46,7 @@ export type inputProps = {
   placeHolder?: string;
   onChangeText?: (text: string) => void;
   secureTextEntry?: boolean;
+  value?:string
 };
 
 export type userType = {
@@ -89,3 +90,9 @@ export type AccountOptionType = {
   bgColor:string;
   routeName?:any
 }
+
+export type UserDataType = {
+  name:string;
+  image?:any
+}
+

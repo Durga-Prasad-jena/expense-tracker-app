@@ -3,8 +3,8 @@ import { inputProps } from "@/types";
 import React from "react";
 import { StyleSheet, TextInput, View } from "react-native";
 import {
-     heightPercentageToDP,
-     widthPercentageToDP,
+  heightPercentageToDP,
+  widthPercentageToDP,
 } from "react-native-responsive-screen";
 
 const FormInput = (props: inputProps) => {
@@ -18,6 +18,7 @@ const FormInput = (props: inputProps) => {
         placeholderTextColor={colors.neutral400}
         style={[styles.input, props.inputStyle]}
         ref={props.inputRef && props.inputRef}
+        value={props.value}
         onChangeText={props.onChangeText}
          secureTextEntry={props.secureTextEntry}
         {...props}

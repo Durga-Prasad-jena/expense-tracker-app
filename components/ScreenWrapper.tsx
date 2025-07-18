@@ -6,7 +6,7 @@ import { Dimensions, Platform, StatusBar, View } from "react-native";
 const { height } = Dimensions.get("window");
 
 const ScreenWrapper = ({ style, children }: screenWrapperProps) => {
-  let paddingTop = Platform.OS === "ios" ? height * 0.06 : 10;
+  let paddingTop = Platform.OS === "ios" ? height * 0.06 : 50;
   return (
     <View
       style={[

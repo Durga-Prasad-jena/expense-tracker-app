@@ -113,7 +113,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     marginHorizontal: wp(4),
-    marginTop: wp(3),
   },
   textWrapper: {
     marginTop: wp(35),

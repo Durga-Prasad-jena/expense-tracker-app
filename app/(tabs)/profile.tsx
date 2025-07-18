@@ -34,7 +34,7 @@ const Profile = () => {
           color={colors.neutral300}
         />
       ),
-      routeName: "/(modals)/profileModal",
+      routeName: "(modals)/profileModal",
       bgColor: "#6366f1",
     },
     {
@@ -88,7 +88,7 @@ const Profile = () => {
     if(item.title === "Logout"){
       showLogoutAlert()
     }
-    if(item.routeName)router.push("/(modals)/profileModal")
+    if(item.routeName)router.push(item.routeName)
   }
 
   return (
