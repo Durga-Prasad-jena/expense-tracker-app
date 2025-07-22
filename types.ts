@@ -1,3 +1,4 @@
+import { Router } from "expo-router";
 import React, { ReactNode } from "react";
 import { TextInput, TextProps, TextStyle, ViewStyle } from "react-native";
 
@@ -46,7 +47,7 @@ export type inputProps = {
   placeHolder?: string;
   onChangeText?: (text: string) => void;
   secureTextEntry?: boolean;
-  value?:string
+  value?: string;
 };
 
 export type userType = {
@@ -85,14 +86,38 @@ export type HeaderProps = {
 };
 
 export type AccountOptionType = {
-  title:string,
-  icon:React.ReactNode;
-  bgColor:string;
-  routeName?:any
-}
+  title: string;
+  icon: React.ReactNode;
+  bgColor: string;
+  routeName?: any;
+};
 
 export type UserDataType = {
-  name:string;
-  image?:any
+  name: string;
+  image?: any;
+};
+
+export type WalletType = {
+  id?: string;
+  name: string;
+  amount?: number;
+  totalIncome?: number;
+  totalExpenses?: number;
+  image: any;
+  uid?: string;
+  created?: Date;
+};
+export type ImageUploadProps = {
+  file?:any;
+  onSelect:(file:any)=>void;
+  onClear:()=>void;
+  containerStyle?:ViewStyle;
+  imageStyle?:ViewStyle;
+  placeHolder?:string
 }
 
+export interface WalletListItemProps {
+  item:WalletType;
+  index:number;
+  router:Router
+}

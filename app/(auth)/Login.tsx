@@ -30,12 +30,11 @@ const Login = () => {
       setIsLoading(false)
       if (!res.success) {
         Alert.alert("Login", res.msg);
-        console.log(res.msg)
       } else {
         router.replace("/(tabs)/home");
       }
     } catch (error) {
-      console.log(error);
+      alert(error)
     }
   };
   return (

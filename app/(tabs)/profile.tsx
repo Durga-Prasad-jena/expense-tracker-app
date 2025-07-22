@@ -73,7 +73,6 @@ const Profile = () => {
     Alert.alert("Confirm","Are you sure you want to logout!",[
       {
         text:"cancel",
-        onPress:()=>console.log("canel"),
         style:"cancel"
       },
       {
