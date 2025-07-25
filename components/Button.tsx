@@ -10,7 +10,7 @@ import Loading from "./Loading";
 const Button = ({ style, children, onPress, loading }: customButtonProps) => {
   if (loading) {
     return (
-      <View style={[styles.btnContain,{backgroundColor:colors.neutral900}]}>
+      <View style={[styles.btnContain,{backgroundColor:"transparent"}]}>
         <Loading size={"large"} color={colors.primary} />
       </View>
     );

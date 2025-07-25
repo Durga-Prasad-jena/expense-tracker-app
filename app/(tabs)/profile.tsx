@@ -151,9 +151,6 @@ const Profile = () => {
           })}
         </View>
       </View>
-      {/* <Button onPress={handleLogout}>
-        <Typo>logout</Typo>
-      </Button> */}
     </ScreenWrapper>
   );
 };

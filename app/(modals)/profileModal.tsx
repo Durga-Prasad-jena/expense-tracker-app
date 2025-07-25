@@ -67,12 +67,12 @@ const ProfileModal = () => {
         aspect: [4, 3],
         quality: 1,
       });
-    
+
       if (!res.canceled) {
         setUserData({ ...userData, image: res.assets[0] });
       }
     } catch (error) {
-     alert(error)
+      alert(error)
     }
   };
   return (

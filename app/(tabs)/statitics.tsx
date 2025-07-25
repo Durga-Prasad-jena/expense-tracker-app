@@ -1,14 +1,16 @@
-import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import ScreenWrapper from "@/components/ScreenWrapper";
+import Typo from "@/components/Typo";
+import React from "react";
+import { StyleSheet } from "react-native";
 
 const Statitics = () => {
   return (
-    <View>
-      <Text>Statitics</Text>
-    </View>
-  )
-}
+    <ScreenWrapper>
+      <Typo>Statics</Typo>
+    </ScreenWrapper>
+  );
+};
 
-export default Statitics
+export default Statitics;
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({});

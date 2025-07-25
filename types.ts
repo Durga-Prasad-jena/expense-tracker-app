@@ -1,4 +1,5 @@
 import { Router } from "expo-router";
+import { Timestamp } from "firebase/firestore";
 import React, { ReactNode } from "react";
 import { TextInput, TextProps, TextStyle, ViewStyle } from "react-native";
 
@@ -48,6 +49,7 @@ export type inputProps = {
   onChangeText?: (text: string) => void;
   secureTextEntry?: boolean;
   value?: string;
+  multiline?:boolean
 };
 
 export type userType = {
@@ -108,16 +110,56 @@ export type WalletType = {
   created?: Date;
 };
 export type ImageUploadProps = {
-  file?:any;
-  onSelect:(file:any)=>void;
-  onClear:()=>void;
-  containerStyle?:ViewStyle;
-  imageStyle?:ViewStyle;
-  placeHolder?:string
-}
+  file?: any;
+  onSelect: (file: any) => void;
+  onClear: () => void;
+  containerStyle?: ViewStyle;
+  imageStyle?: ViewStyle;
+  placeHolder?: string;
+};
 
 export interface WalletListItemProps {
-  item:WalletType;
-  index:number;
-  router:Router
+  item: WalletType;
+  index: number;
+  router: Router;
 }
+
+export type TransactionListProps = {
+  data: TransactionType[];
+  title?: string;
+  loading?: boolean;
+  emptyListMessage?: string;
+};
+
+export type TransactionType = {
+  id?: string;
+  type: string;
+  amount: number;
+  category?: string;
+  date: Date | Timestamp | string;
+  description?: string;
+  image?: string;
+  uid?: string;
+  walletId: string;
+};
+
+export type TransactionItemProps  = {
+  index:number;
+  handleClick:()=>void,
+  item:TransactionType
+}
+
+export type ExpenseCategoryType = {
+  [key:string]:CategoryType
+}
+
+export type CategoryType = {
+  label:string;
+  value:string;
+  icon:any;
+  bgColor:string
+}
+export type SelectModal = {value:string;label:string}[]
+
+
+

@@ -3,7 +3,7 @@ import Button from "@/components/Button";
 import FormInput from "@/components/FormInput";
 import ScreenWrapper from "@/components/ScreenWrapper";
 import Typo from "@/components/Typo";
-import { colors } from "@/constants/theme";
+import { colors, spacingX, spacingY } from "@/constants/theme";
 import { useAuth } from "@/contexts/authContext";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import { useRouter } from "expo-router";
@@ -24,6 +24,7 @@ const Login = () => {
     try {
       if (!emailRef.current || !passwordRef.current) {
         Alert.alert("login", "Please fill all fields");
+        return;
       }
       setIsLoading(true)
       const res = await loginUser(emailRef.current, passwordRef.current);
@@ -111,10 +112,10 @@ export default Login;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginHorizontal: wp(4),
+    marginHorizontal: spacingX._15,
   },
   textWrapper: {
-    marginTop: wp(35),
+    marginTop:spacingY._60,
     gap: wp(1),
   },
   form: {

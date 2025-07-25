@@ -1,4 +1,5 @@
 import { HeaderProps } from "@/types";
+import { scale } from "@/utils/styling";
 import React from "react";
 import { StyleSheet, View } from "react-native";
 import Typo from "./Typo";
@@ -20,6 +21,7 @@ export default Header;
 
 const styles = StyleSheet.create({
   container: {
+    marginLeft:scale(12),
      alignItems:"center",
      flexDirection:"row",
      width:"100%"

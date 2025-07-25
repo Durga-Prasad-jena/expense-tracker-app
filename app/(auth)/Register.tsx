@@ -3,7 +3,7 @@ import Button from "@/components/Button";
 import FormInput from "@/components/FormInput";
 import ScreenWrapper from "@/components/ScreenWrapper";
 import Typo from "@/components/Typo";
-import { colors } from "@/constants/theme";
+import { colors, spacingX, spacingY } from "@/constants/theme";
 import { useAuth } from "@/contexts/authContext";
 import AntDesign from "@expo/vector-icons/AntDesign";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
@@ -25,6 +25,7 @@ const Register = () => {
   const handleLogin = async () => {
     if (!emailRef.current || !passwordRef.current || !nameRef.current) {
       Alert.alert("login", "Please fill all fields");
+      return;
     }
     setIsLoading(true);
     const res = await registerUser(
@@ -34,6 +35,7 @@ const Register = () => {
     );
     setIsLoading(false);
     if (!res.success) {
+     
       Alert.alert("Signup", res.msg);
     }
   };
@@ -112,11 +114,11 @@ export default Register;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginHorizontal: wp(4),
+    marginHorizontal: spacingY._10,
     marginTop: wp(3),
   },
   textWrapper: {
-    marginTop: wp(35),
+    marginTop: spacingX._40,
     gap: wp(1),
   },
   form: {

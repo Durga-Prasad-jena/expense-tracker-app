@@ -33,7 +33,6 @@ const useFetchData = <T>(
         setLoading(false);
       },
       (err) => {
-        console.log("error when fetch data", err);
         setError(err.message);
         setLoading(false);
       }

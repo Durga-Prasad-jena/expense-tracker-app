@@ -21,6 +21,7 @@ const FormInput = (props: inputProps) => {
         value={props.value}
         onChangeText={props.onChangeText}
          secureTextEntry={props.secureTextEntry}
+         multiline={props.multiline}
         {...props}
       />
     </View>

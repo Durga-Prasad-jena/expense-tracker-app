@@ -12,7 +12,6 @@ import {
   deleteWalletById,
 } from "@/services/walletServices";
 import { WalletType } from "@/types";
-import { verticalScale } from "@/utils/styling";
 import AntDesign from "@expo/vector-icons/AntDesign";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import React, { useEffect, useState } from "react";
@@ -41,13 +40,13 @@ const WalletModal = () => {
 
   const handleDelete = async () => {
     if (!oldWallet?.id) return;
-    setLoading(true)
-    const res = await  deleteWalletById(oldWallet?.id);
-   setLoading(false)
-   if(res.success){
-    Alert.alert("")
-    router.back()
-   }
+    setLoading(true);
+    const res = await deleteWalletById(oldWallet?.id);
+    setLoading(false);
+    if (res.success) {
+      Alert.alert("Delete", res?.msg || "Wallet Deleted Succfully!");
+      router.back();
+    }
   };
 
   const showDeleteAlert = () => {
@@ -121,7 +120,7 @@ const WalletModal = () => {
           </View>
         </ScrollView>
         <View style={styles.footer}>
-          {oldWallet?.id && (
+          {oldWallet?.id && !loading && (
             <Button
               onPress={showDeleteAlert}
               style={{
@@ -158,42 +157,17 @@ const styles = StyleSheet.create({
     marginTop: spacingY._15,
     gap: spacingY._30,
   },
-  avatarContainer: {
-    position: "relative",
-    alignSelf: "center",
-  },
-  avatar: {
-    alignSelf: "center",
-    backgroundColor: colors.neutral400,
-    height: verticalScale(135),
-    width: verticalScale(135),
-    borderWidth: 1,
-    borderRadius: 200,
-    borderColor: colors.neutral500,
-  },
-  editIcon: {
-    position: "absolute",
-    bottom: spacingY._5,
-    right: spacingY._7,
-    padding: spacingY._7,
-    borderRadius: 100,
-    backgroundColor: colors.neutral100,
-    shadowColor: colors.black,
-    shadowOffset: { width: 0, height: 0 },
-    shadowOpacity: 0.25,
-    shadowRadius: 10,
-    elevation: 4,
-  },
+
   inputContainer: {
     gap: spacingY._10,
     marginHorizontal: widthPercentageToDP(5),
   },
   footer: {
-    gap: 10,
-    display: "flex",
     flexDirection: "row",
+    position: "absolute",
     alignSelf: "center",
     bottom: 10,
     marginHorizontal: spacingX._15,
+    gap:10
   },
 });

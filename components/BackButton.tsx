@@ -27,6 +27,5 @@ const styles = StyleSheet.create({
     borderRadius: wp(3),
     alignSelf: "flex-start",
     borderCurve: "continuous",
-    marginLeft: wp(4),
   },
 });
