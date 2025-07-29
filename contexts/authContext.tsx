@@ -4,6 +4,7 @@ import { useRouter } from "expo-router";
 import {
   createUserWithEmailAndPassword,
   onAuthStateChanged,
+  sendPasswordResetEmail,
   signInWithEmailAndPassword,
 } from "firebase/auth";
 import { doc, getDoc, setDoc } from "firebase/firestore";
@@ -91,12 +92,23 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
     }
   };
 
+  const forgotPassword = async(email:string) =>{
+    try {
+      const res = await sendPasswordResetEmail(auth,email);
+      return {success:true,msg:"Otp send Successfully"}
+      
+    } catch (error:any) {
+       return {success:false,msg:error.message}
+    }
+  }
+
   const contextValue: AuthContextType = {
     login,
     register,
     setUser,
     updateUserData,
     user,
+    forgotPassword
   };
 
   return (

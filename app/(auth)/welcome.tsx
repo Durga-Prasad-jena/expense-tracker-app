@@ -92,7 +92,7 @@ const styles = StyleSheet.create({
     height: verticalScale(300),
   },
   footer: {
-    marginTop: wp(30),
+    marginTop: wp(10),
   },
   buttonContainer: {},
 });

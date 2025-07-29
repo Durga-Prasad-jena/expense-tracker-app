@@ -8,7 +8,7 @@ import { useAuth } from "@/contexts/authContext";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import { useRouter } from "expo-router";
 import React, { useRef, useState } from "react";
-import { Alert, Pressable, StyleSheet, View } from "react-native";
+import { Alert, Pressable, StyleSheet, TouchableOpacity, View } from "react-native";
 import {
   widthPercentageToDP,
   widthPercentageToDP as wp,
@@ -28,13 +28,14 @@ const Login = () => {
       }
       setIsLoading(true)
       const res = await loginUser(emailRef.current, passwordRef.current);
-      setIsLoading(false)
       if (!res.success) {
+        setIsLoading(false)
         Alert.alert("Login", res.msg);
       } else {
         router.replace("/(tabs)/home");
       }
     } catch (error) {
+      setIsLoading(false)
       alert(error)
     }
   };
@@ -80,13 +81,15 @@ const Login = () => {
                 />
               }
             />
-            <Typo
+         <TouchableOpacity onPress={()=>router.push("/(auth)/ForgotPassword")}>
+             <Typo
               size={14}
               color={colors.text}
               style={{ alignSelf: "flex-end" }}
             >
               Forgot password?
             </Typo>
+         </TouchableOpacity>
             <Button loading={isLoading} onPress={handleLogin}>
               <Typo color={colors.neutral700} fontWeight={"900"} size={20}>
                 Login

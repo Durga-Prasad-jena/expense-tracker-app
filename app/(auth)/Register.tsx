@@ -23,7 +23,8 @@ const Register = () => {
   const { register: registerUser } = useAuth();
 
   const handleLogin = async () => {
-    if (!emailRef.current || !passwordRef.current || !nameRef.current) {
+  try {
+      if (!emailRef.current || !passwordRef.current || !nameRef.current) {
       Alert.alert("login", "Please fill all fields");
       return;
     }
@@ -38,6 +39,11 @@ const Register = () => {
      
       Alert.alert("Signup", res.msg);
     }
+  } catch (error) {
+    setIsLoading(false)
+    alert(error)
+
+  }
   };
   return (
     <ScreenWrapper>
