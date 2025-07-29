@@ -56,7 +56,6 @@ const WalletModal = () => {
       [
         {
           text: "Cancel",
-          onPress: () => console.log("cancel"),
           style: "cancel",
         },
         {

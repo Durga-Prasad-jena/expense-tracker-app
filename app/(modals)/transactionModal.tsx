@@ -9,7 +9,7 @@ import { expenseCategories, transactionTypes } from '@/constants/data'
 import { colors, radius, spacingX, spacingY } from '@/constants/theme'
 import { useAuth } from '@/contexts/authContext'
 import useFetchData from '@/hooks/useFetchData'
-import { createOrUpdateTransaction } from '@/services/transactionService'
+import { createOrUpdateTransaction, deleteTransaction } from '@/services/transactionService'
 import { TransactionType, WalletType } from '@/types'
 import { verticalScale } from '@/utils/styling'
 import AntDesign from '@expo/vector-icons/AntDesign'
@@ -88,33 +88,32 @@ const TransactionModal = () => {
     }, [])
 
     const handleDelete = async () => {
-        // if (!oldTransaction?.id) return;
-        // setLoading(true);
-        // const res = await deleteWalletById(oldTransaction?.id);
-        // setLoading(false);
-        // if (res.success) {
-        //   Alert.alert("Delete", res?.msg || "Wallet Deleted Succfully!");
-        //   router.back();
-        // }
+        if (!oldTransaction?.id) return;
+        setLoading(true);
+        const res = await deleteTransaction(oldTransaction?.id,oldTransaction.walletId);
+        setLoading(false);
+        if (res.success) {
+          Alert.alert("Delete", res?.msg || "Wallet Deleted Succfully!");
+          router.back();
+        }
     }
 
     const showDeleteAlert = () => {
-        // Alert.alert(
-        //   "Confirm",
-        //   "Are you sure you want to delete\n This action will remove all the transction related to this alert",
-        //   [
-        //     {
-        //       text: "Cancel",
-        //       onPress: () => console.log("cancel"),
-        //       style: "cancel",
-        //     },
-        //     {
-        //       text: "Delete",
-        //       onPress: handleDelete,
-        //       style: "destructive",
-        //     },
-        //   ]
-        // );
+        Alert.alert(
+            "Confirm",
+            "Are you sure you want to delete!",
+            [
+                {
+                    text: "Cancel",
+                    style: "cancel",
+                },
+                {
+                    text: "Delete",
+                    onPress: handleDelete,
+                    style: "destructive",
+                },
+            ]
+        );
     }
 
     const handleUpdateWallet = async () => {
@@ -130,7 +129,7 @@ const TransactionModal = () => {
             return
         }
 
-        const transactionData : TransactionType= {
+        const transactionData: TransactionType = {
             amount,
             date,
             type,
@@ -141,7 +140,7 @@ const TransactionModal = () => {
             category
         }
         setLoading(true)
-        if(oldTransaction.id) transactionData.id = oldTransaction.id;
+        if (oldTransaction.id) transactionData.id = oldTransaction.id;
         const res = await createOrUpdateTransaction(transactionData)
 
         if (res.success) {
@@ -331,7 +330,7 @@ const TransactionModal = () => {
                     </View>
                 </ScrollView>
                 <View style={styles.footer}>
-                    {oldTransaction?.id && !loading &&  (
+                    {oldTransaction?.id && !loading && (
                         <Button
                             onPress={showDeleteAlert}
                             style={{
@@ -342,17 +341,17 @@ const TransactionModal = () => {
                             <AntDesign name='delete' size={24} color={colors.white} />
                         </Button>
                     )}
-                 
-                       <Button
+
+                    <Button
                         loading={loading}
                         onPress={handleUpdateWallet}
-                        style={{width:oldTransaction.id ? "84%" : "100%"}}
+                        style={{ width: oldTransaction.id ? "84%" : "100%" }}
                     >
                         <Typo color={colors.neutral800} size={18} fontWeight={'700'}>
                             {oldTransaction.id ? 'Update Transaction' : 'Add Transaction'}
                         </Typo>
                     </Button>
-               
+
                 </View>
             </View>
         </ModalWrapper>
@@ -382,7 +381,7 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         bottom: 10,
         marginHorizontal: spacingX._15,
-        gap:10
+        gap: 10
     },
 
     dropdownContainer: {

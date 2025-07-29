@@ -10,7 +10,7 @@ import { scale, verticalScale } from '@/utils/styling'
 import AntDesign from '@expo/vector-icons/AntDesign'
 import Feather from '@expo/vector-icons/Feather'
 import { useRouter } from 'expo-router'
-import { limit, where } from 'firebase/firestore'
+import { limit, orderBy, where } from 'firebase/firestore'
 import React from 'react'
 import { ScrollView, StyleSheet, TouchableOpacity, View } from 'react-native'
 
@@ -23,11 +23,9 @@ const Home = () => {
     loading: transactionLoading
   } = useFetchData<TransactionType>('transaction', [
     where('uid', '==', user?.uid),
+    orderBy('date', 'desc'),
     limit(30)
-  ])
-
-  console.log("recent transaction",recentTransaction[0])
-
+  ]);
 
   return (
     <ScreenWrapper>
@@ -41,7 +39,7 @@ const Home = () => {
               {user?.name}
             </Typo>
           </View>
-          <TouchableOpacity style={styles.serachIcon}>
+          <TouchableOpacity onPress={() => router.push("/(modals)/searchModal")} style={styles.serachIcon}>
             <Feather
               name='search'
               size={verticalScale(22)}
@@ -57,13 +55,13 @@ const Home = () => {
             <HomeCard />
           </View>
           <View>
-        
-              <TransactionList
-                title='Recent Transaction'
-                data={recentTransaction}
-                loading={transactionLoading}
-                emptyListMessage='No transaction added yet'
-              />
+
+            <TransactionList
+              title='Recent Transaction'
+              data={recentTransaction}
+              loading={transactionLoading}
+              emptyListMessage='No transaction added yet'
+            />
           </View>
         </ScrollView>
         <TouchableOpacity
@@ -82,7 +80,7 @@ export default Home
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingHorizontal: scale(12)
+    paddingHorizontal: scale(22)
   },
   header: {
     flexDirection: 'row',

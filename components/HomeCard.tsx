@@ -102,13 +102,13 @@ const styles = StyleSheet.create({
   bgImage: {
     width: '100%',
     height: scale(210),
-    borderRadius: radius._15
+    // borderRadius: 100
   },
   container: {
     width: '100%',
     height: '87%',
     paddingHorizontal: scale(15),
-    padding: scale(10)
+    padding: scale(10),
   },
   balanceView: {
     flexDirection: 'row',

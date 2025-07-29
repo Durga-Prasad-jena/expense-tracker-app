@@ -6,6 +6,7 @@ import { colors } from "@/constants/theme";
 import { useAuth } from "@/contexts/authContext";
 import { getProfileImage } from "@/services/imageService";
 import { AccountOptionType } from "@/types";
+import { scale } from "@/utils/styling";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import { Image } from "expo-image";
@@ -160,7 +161,7 @@ export default Profile;
 const styles = StyleSheet.create({
   profileContainer: {
     flex: 1,
-    paddingHorizontal: widthPercentageToDP(5),
+    paddingHorizontal: scale(20),
   },
   userInfo: {
     alignSelf: "center",

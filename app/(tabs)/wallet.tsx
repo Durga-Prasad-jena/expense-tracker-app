@@ -84,7 +84,7 @@ const styles = StyleSheet.create({
   wallets: {
     width: "100%",
     height: "80%",
-    backgroundColor: colors.neutral700,
+    backgroundColor: colors.neutral900,
     borderTopLeftRadius: radius._30,
     borderTopRightRadius: radius._30,
     paddingHorizontal: spacingX._25,
